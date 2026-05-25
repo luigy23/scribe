@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scribe — Local-LLM README generator</title>
+  <meta name="description" content="Drop a local repository path, get a polished README.md back. The model runs on your own machine through Ollama." />
+
+  <meta property="og:title" content="Scribe — Local-LLM README generator" />
+  <meta property="og:description" content="Local AI that drafts a README for any code repository. No data leaves your machine." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='26'%3E%F0%9F%93%9D%3C/text%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav class="topnav">
+    <a class="brand mono" href="#">~/scribe</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="#docs">Docs</a>
+      <a class="cta mono" href="https://github.com/luigy23/scribe">github →</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="paper-pattern"></div>
+      <div class="container">
+        <span class="kicker mono">v0.1 · qwen2.5-coder · 100% local</span>
+        <h1>
+          Every repo deserves
+          <em>a good README.</em>
+        </h1>
+        <p class="lead">
+          Point Scribe at any local folder. Get a polished <code>README.md</code> back —
+          title, badges, overview, features, install instructions, the whole thing.
+          The model runs on your own machine.
+        </p>
+        <div class="cta-row">
+          <a class="btn-primary mono" href="#install">$ brew install ollama</a>
+          <a class="btn-ghost" href="https://github.com/luigy23/scribe">View on GitHub</a>
+        </div>
+        <p class="reassurance">
+          No API keys. No cloud calls. No data leaves your laptop.
+        </p>
+      </div>
+    </section>
+
+    <section class="terminal-section">
+      <div class="container">
+        <div class="terminal">
+          <div class="terminal-bar"><span></span><span></span><span></span> ~/scribe</div>
+          <pre class="terminal-body">
+$ scribe generate ./my-project --output README.md
+<span class="cyan">▸ title</span>
+# My Project
+
+<span class="muted">*A small utility for parsing CSV files into JSON.*</span>
+
+<span class="cyan">▸ description</span>
+## Overview
+
+My Project is a small utility for parsing CSV files into JSON. It
+targets data engineers who need to ingest legacy reports into modern
+pipelines without writing one-off parsers.
+
+<span class="cyan">▸ features</span>
+## Features
+
+- <span class="bold">Streaming reads</span> — handles files larger than RAM.
+- <span class="bold">Type inference</span> — numbers, dates, booleans recognised.
+- ...
+
+<span class="green">✓ README written to README.md</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="container">
+        <header>
+          <span class="kicker mono">why scribe</span>
+          <h2>The decisions that make it work.</h2>
+        </header>
+        <div class="grid">
+          <article>
+            <div class="icon">🔒</div>
+            <h3>Local model, by default</h3>
+            <p>Ollama runs <code>qwen2.5-coder:7b</code> on your machine. Your code does not leave the laptop. Not for analytics, not for "training", not at all.</p>
+          </article>
+          <article>
+            <div class="icon">📐</div>
+            <h3>Deterministic + generative</h3>
+            <p>The analyzer walks your repo and produces a structured fact-sheet. The LLM writes prose from those facts. Badges and the file tree never go through the model — they cannot hallucinate.</p>
+          </article>
+          <article>
+            <div class="icon">⚡</div>
+            <h3>Section-scoped prompts</h3>
+            <p>One prompt per section, not a mega-prompt. The model stays focused, the output stays clean, you get tokens streamed live.</p>
+          </article>
+          <article>
+            <div class="icon">🪞</div>
+            <h3>Two interfaces, one engine</h3>
+            <p>A Typer CLI with Rich-formatted progress for terminals and CI, and a Streamlit web UI for everyone else.</p>
+          </article>
+          <article>
+            <div class="icon">🧪</div>
+            <h3>Honest about its limits</h3>
+            <p>22 passing tests, ~78% coverage, documented failure modes. You're shipping a draft-writer, not a fact-checker.</p>
+          </article>
+          <article>
+            <div class="icon">💸</div>
+            <h3>Free after one download</h3>
+            <p>A 4.7 GB model pull, then every README is free. No usage meter, no monthly bill, no token counter.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="install" id="install">
+      <div class="container">
+        <header>
+          <span class="kicker mono">three commands</span>
+          <h2>Up and running in under a minute.</h2>
+        </header>
+        <ol class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Install Ollama and pull the model</h4>
+              <pre><code>brew install ollama
+ollama serve &
+ollama pull qwen2.5-coder:7b</code></pre>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Install Scribe</h4>
+              <pre><code>git clone https://github.com/luigy23/scribe
+cd scribe
+./scripts/setup.sh
+source .venv/bin/activate</code></pre>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Generate a README</h4>
+              <pre><code>scribe generate ~/projects/my-cool-thing --output README.md
+# or open the web UI:
+scribe ui</code></pre>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Try it on your messiest repo.</h2>
+        <p>It probably has more frameworks than you remember.</p>
+        <a class="btn-primary" href="https://github.com/luigy23/scribe">github.com/luigy23/scribe</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer" id="docs">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Project</h4>
+          <ul>
+            <li><a href="https://github.com/luigy23/scribe">Source on GitHub</a></li>
+            <li><a href="https://github.com/luigy23/scribe/tree/main/docs">Documentation (14 sections)</a></li>
+            <li><a href="https://github.com/luigy23/scribe/blob/main/INVENTORY.md">Repo inventory</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Stack</h4>
+          <ul>
+            <li><a href="https://ollama.com">Ollama</a></li>
+            <li><a href="https://typer.tiangolo.com">Typer</a></li>
+            <li><a href="https://streamlit.io">Streamlit</a></li>
+            <li><a href="https://rich.readthedocs.io">Rich</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Context</h4>
+          <p class="dim">
+            Final project for the Artificial Intelligence course (BEINSOF52)
+            at Universidad Surcolombiana, May 2026.
+          </p>
+          <p class="dim">
+            Built by <a href="https://github.com/luigy23">@luigy23</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
