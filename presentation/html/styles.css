@@ -1,0 +1,687 @@
+/* =====================================================================
+   Scribe — reveal.js theme overrides
+   Ink + paper palette · serif display, sans body, mono terminal
+   ===================================================================== */
+
+:root {
+  --ink:        #1F2937;  /* slate-800 */
+  --ink-soft:   #374151;
+  --slate:      #4B5563;
+  --muted:      #71717A;
+  --paper:      #FAFAF6;
+  --warm-paper: #F6F2E9;
+  --line:       #E5E5DC;
+  --white:      #FFFFFF;
+  --amber:      #F59E0B;  /* accent */
+  --amber-soft: #FCE7B5;
+  --highlight:  #FEF3C7;
+  --green:      #16A34A;
+  --cyan:       #06B6D4;
+  --rose:       #BE5F4F;
+}
+
+.reveal {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.reveal code, .mono, .reveal .mono {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 0.9em;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  background: var(--paper);
+  padding: 48px 56px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.reveal .slides section > h2 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin: 8px 0 24px;
+}
+
+.reveal p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+code {
+  background: var(--warm-paper);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.9em;
+}
+
+/* ---------------------- topbar ---------------------- */
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  padding: 0 0 12px 0;
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.topbar > .mono {
+  color: var(--ink);
+  font-weight: 500;
+}
+.topbar .kicker {
+  margin-left: auto;
+  font-style: italic;
+}
+
+/* ---------------------- dark slides (title + thanks) ---------------------- */
+.slide-dark {
+  background: var(--ink) !important;
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.slide-dark h1, .slide-dark h2, .slide-dark h3, .slide-dark h4 { color: var(--paper); }
+
+.paper-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(245,158,11,0.05) 1px, transparent 1px);
+  background-size: 100% 28px;
+  pointer-events: none;
+}
+
+.slide-title .brand {
+  margin-bottom: 64px;
+}
+.slide-title .brand .mono {
+  color: var(--amber);
+  font-size: 18px;
+}
+
+.slide-title h1 {
+  font-size: 84px;
+  line-height: 0.98;
+  font-weight: 600;
+  color: var(--paper);
+  margin: 0 0 12px;
+}
+.slide-title h1 em {
+  display: block;
+  font-style: italic;
+  color: var(--amber);
+  font-weight: 500;
+  margin-top: 6px;
+}
+.slide-title .lead {
+  font-size: 22px;
+  color: rgba(250, 250, 246, 0.7);
+  margin-top: 24px;
+}
+.accent {
+  border: 0;
+  height: 3px;
+  width: 64px;
+  background: var(--amber);
+  margin: 36px 0;
+}
+.slide-title .meta {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(250, 250, 246, 0.65);
+}
+.slide-title .meta strong {
+  display: block;
+  color: var(--paper);
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+/* ---------------------- problem slide ---------------------- */
+.row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2.2fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.problem-quote {
+  background: var(--warm-paper);
+  border-left: 4px solid var(--amber);
+  border-radius: 0 12px 12px 0;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.problem-quote p {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 32px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.problem-quote .byline {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--ink);
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+.card h3 {
+  color: var(--ink);
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.card p {
+  color: var(--slate);
+  font-size: 14px;
+}
+
+/* ---------------------- terminal block ---------------------- */
+.terminal {
+  background: var(--ink);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 12px 0;
+  box-shadow: 0 14px 40px -10px rgba(31, 41, 55, 0.4);
+}
+.terminal-bar {
+  background: #111827;
+  color: rgba(250, 250, 246, 0.6);
+  padding: 10px 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.terminal-bar > span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3F3F46;
+}
+.terminal-bar > span:nth-child(1) { background: #F87171; }
+.terminal-bar > span:nth-child(2) { background: #FACC15; }
+.terminal-bar > span:nth-child(3) { background: #34D399; }
+.terminal-bar > span:nth-child(4) { margin-left: 12px; background: transparent; width: auto; height: auto; }
+.terminal pre {
+  margin: 0;
+  padding: 18px 22px;
+  color: var(--paper);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  background: transparent;
+}
+.terminal .cyan { color: var(--cyan); font-weight: 600; }
+.terminal .green { color: var(--green); }
+.terminal .bold { color: var(--paper); font-weight: 700; }
+.terminal .muted { color: rgba(250, 250, 246, 0.55); font-style: italic; }
+
+.banner {
+  background: var(--amber);
+  color: var(--ink);
+  text-align: center;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 18px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* ---------------------- grids ---------------------- */
+.grid { display: grid; gap: 16px; }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* ---------------------- demo placeholders ---------------------- */
+.demo-scene {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.demo-scene .placeholder {
+  background: var(--ink);
+  color: var(--amber);
+  padding: 24px 18px;
+  font-size: 14px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.demo-scene .caption {
+  padding: 18px;
+}
+.demo-scene .caption .num {
+  font-family: "Fraunces", Georgia, serif;
+  color: var(--amber);
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 8px;
+}
+.demo-scene .caption h3 {
+  display: inline;
+  font-size: 20px;
+}
+.demo-scene .caption .sub {
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+  margin-top: 6px;
+}
+
+.cue {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--ink);
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 18px;
+}
+
+/* ---------------------- how it works (halves) ---------------------- */
+.halves .half {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px;
+}
+.halves .half h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.halves .half .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--amber);
+  color: var(--ink);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 4px;
+}
+.halves .half ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.halves .half li {
+  font-size: 15px;
+  color: var(--ink-soft);
+  position: relative;
+  padding-left: 16px;
+}
+.halves .half li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--amber);
+}
+.halves .half .footnote {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ---------------------- why local ---------------------- */
+.reasons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.reasons article {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--amber);
+  border-radius: 10px;
+  padding: 22px;
+}
+.reasons h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.reasons p {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.callout {
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  padding: 22px;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+.callout .dim {
+  color: rgba(250, 250, 246, 0.55);
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ---------------------- stats ---------------------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stats article {
+  background: var(--warm-paper);
+  border-radius: 10px;
+  padding: 20px 16px;
+  text-align: center;
+}
+.stats .value {
+  font-family: "Fraunces", Georgia, serif;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+}
+.stats .value .unit { color: var(--amber); font-size: 18px; margin-left: 2px; }
+.stats .label {
+  margin-top: 8px;
+  color: var(--slate);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* ---------------------- results table ---------------------- */
+table.results {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 12px;
+}
+table.results th {
+  background: var(--ink);
+  color: var(--paper);
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 600;
+}
+table.results td {
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  padding: 12px;
+  color: var(--ink-soft);
+}
+table.results tr:hover td { background: var(--warm-paper); }
+
+/* ---------------------- failure pairs ---------------------- */
+.pair {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+}
+.pair .a, .pair .b {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--ink);
+}
+.pair .vs {
+  color: var(--amber);
+  font-size: 22px;
+  margin: 4px 0;
+  text-align: left;
+}
+.pair p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.mitigations {
+  background: var(--warm-paper);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-top: 18px;
+}
+.mitigations h4 {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+.mitigations ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mitigations li {
+  color: var(--ink-soft);
+  font-size: 14px;
+  position: relative;
+  padding-left: 18px;
+}
+.mitigations li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--amber);
+}
+
+/* ---------------------- architecture diagram ---------------------- */
+.arch-stack { display: flex; flex-direction: column; gap: 6px; }
+.layer {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+.layer .bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--amber);
+  border-radius: 8px 0 0 8px;
+}
+.layer .layer-body { flex: 1; padding-left: 6px; }
+.layer .layer-body h3 {
+  font-size: 20px;
+  margin: 0;
+}
+.layer .layer-body p {
+  color: var(--slate);
+  font-size: 14px;
+  margin-top: 2px;
+}
+.layer .host {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "JetBrains Mono", monospace;
+}
+.arrow {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+.caption-muted {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ---------------------- engineering practices ---------------------- */
+.practice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.practice-list article {
+  display: grid;
+  grid-template-columns: 200px 220px 1fr;
+  gap: 16px;
+  align-items: center;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--amber);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+.practice-list .key {
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.practice-list .value {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+}
+.practice-list .sub {
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---------------------- future work ---------------------- */
+.future article {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.future .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.future article h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.future article p {
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+/* ---------------------- thanks slide ---------------------- */
+.slide-thanks h1 {
+  font-size: 100px;
+  line-height: 1;
+  margin-top: 16px;
+}
+.slide-thanks h2.italic {
+  font-style: italic;
+  color: var(--amber);
+  font-weight: 500;
+  font-size: 58px;
+  margin-top: 6px;
+}
+.slide-thanks .links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 8px;
+}
+.slide-thanks .links .muted {
+  color: rgba(250, 250, 246, 0.6);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.slide-thanks .links .big-link {
+  color: var(--paper);
+  margin-top: 4px;
+  font-size: 22px;
+}
+.slide-thanks .meta {
+  position: absolute;
+  bottom: 36px;
+  left: 56px;
+  right: 56px;
+  color: rgba(250, 250, 246, 0.55);
+  font-size: 13px;
+}
+
+/* ---------------------- reveal controls ---------------------- */
+.reveal .progress {
+  color: var(--amber);
+  height: 3px;
+}
+.reveal .controls {
+  color: var(--ink);
+}
+.reveal .slide-number {
+  background: transparent;
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+}

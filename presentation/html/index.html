@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Scribe — Final Project Presentation</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1. Title -->
+      <section class="slide-dark slide-title">
+        <div class="paper-pattern"></div>
+
+        <header class="brand">
+          <span class="mono">~/scribe</span>
+        </header>
+
+        <h1>
+          Every repo deserves
+          <em>a good README.</em>
+        </h1>
+
+        <p class="lead">A locally-runnable AI that drafts one for you.</p>
+
+        <hr class="accent" />
+
+        <footer class="meta">
+          <strong>Luigy Leonardo</strong>
+          <span>Artificial Intelligence · BEINSOF52</span>
+          <span>Universidad Surcolombiana · May 2026</span>
+          <span>Instructor: Juan Antonio Castro Silva</span>
+        </footer>
+
+        <aside class="notes">
+          Hook: Every developer has had this moment — finishing a project, opening the empty README, and writing nothing. Scribe is the tool I wished I had. Local AI, two interfaces, drafts a README for any repo. Ten minutes.
+        </aside>
+      </section>
+
+      <!-- 2. The problem -->
+      <section>
+        <header class="topbar">
+          <span class="mono">~/scribe</span>
+          <span>Slide 02</span>
+          <span class="kicker">Why this exists</span>
+        </header>
+        <h2>READMEs are the chronically deferred chore.</h2>
+
+        <div class="row">
+          <div class="problem-quote">
+            <p>“I'll write it later.”</p>
+            <span class="byline">— every developer, every project</span>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <h3>1. Templates are generic.</h3>
+              <p>Cookiecutter, <code>npm init</code>, <code>cargo new</code> — same skeleton every time. They know nothing about your project.</p>
+            </article>
+            <article class="card">
+              <h3>2. Cloud AI collects code.</h3>
+              <p>ChatGPT, Copilot, Cursor will write a README — but you ship your repo to a third party to get it.</p>
+            </article>
+            <article class="card">
+              <h3>3. Writing it by hand is tedious.</h3>
+              <p>You remember everything; you just don't want to type it twice.</p>
+            </article>
+          </div>
+        </div>
+
+        <aside class="notes">
+          Three problems compound: templates are generic, cloud AI is a privacy concern, hand-writing is boring. Result: most repos ship with a title and a one-liner.
+        </aside>
+      </section>
+
+      <!-- 3. What Scribe does -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 03</span><span class="kicker">The thing in one slide</span></header>
+        <h2>One command. Polished README out.</h2>
+
+        <div class="terminal">
+          <div class="terminal-bar"><span></span><span></span><span></span> ~/scribe</div>
+<pre class="terminal-body">
+$ scribe generate ./my-project --output README.md
+<span class="cyan">▸ title</span>
+# My Project
+<span class="muted">*A small utility for parsing CSV files into JSON.*</span>
+<span class="cyan">▸ description</span>
+## Overview
+My Project is a small utility for parsing CSV files into JSON...
+<span class="cyan">▸ features</span>
+## Features
+- <span class="bold">Streaming reads</span> — handles files larger than RAM
+- <span class="bold">Type inference</span> — numbers, dates, booleans auto-detected
+- ...
+<span class="green">✓ README written to README.md</span>
+</pre>
+        </div>
+
+        <div class="banner">Eight sections. ~40 seconds on a small repo. Nothing leaves the laptop.</div>
+
+        <aside class="notes">
+          The product in one slide. You point Scribe at a folder, you get a polished README back. Sub-minute. Local model. Two interfaces — terminal and web.
+        </aside>
+      </section>
+
+      <!-- 4. Live demo -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 04</span><span class="kicker">Three scenarios</span></header>
+        <h2>Live demo</h2>
+
+        <div class="grid grid-3 demo">
+          <article class="demo-scene">
+            <div class="placeholder mono">$ scribe analyze .</div>
+            <div class="caption">
+              <span class="num">1</span>
+              <h3>Analyze a repo</h3>
+              <p class="sub">Show Rich tables of facts.</p>
+            </div>
+          </article>
+          <article class="demo-scene">
+            <div class="placeholder mono">$ scribe generate .</div>
+            <div class="caption">
+              <span class="num">2</span>
+              <h3>Stream a README</h3>
+              <p class="sub">Tokens fly past in cyan.</p>
+            </div>
+          </article>
+          <article class="demo-scene">
+            <div class="placeholder mono">$ scribe ui</div>
+            <div class="caption">
+              <span class="num">3</span>
+              <h3>Open the web UI</h3>
+              <p class="sub">Streamlit, drop a path, download.</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="cue">→ Switch to the terminal. Real repos, real output.</p>
+
+        <aside class="notes">
+          Live demo. First: scribe analyze on LeafLens — show the 10 frameworks detected. Second: scribe generate streaming — show the README being written live. Third: scribe ui — show the Streamlit page, drop a path, download.
+        </aside>
+      </section>
+
+      <!-- 5. How it works -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 05</span><span class="kicker">Two halves, one engine</span></header>
+        <h2>How it works</h2>
+
+        <div class="grid grid-2 halves">
+          <article class="half">
+            <h3><span class="num">A</span>&nbsp; Deterministic analyzer</h3>
+            <ul>
+              <li>Walks the directory</li>
+              <li>Counts files by language</li>
+              <li>Parses <code>pyproject.toml</code>, <code>package.json</code>, <code>Cargo.toml</code>, <code>go.mod</code></li>
+              <li>Detects 35+ frameworks</li>
+              <li>Finds tests, CI, Docker, license, scripts</li>
+              <li>Renders a top-3-level file tree</li>
+            </ul>
+            <p class="footnote">Output: a typed <code>RepoFacts</code> snapshot. Pure reads, no network.</p>
+          </article>
+
+          <article class="half">
+            <h3><span class="num">B</span>&nbsp; Generative LLM</h3>
+            <ul>
+              <li>Section-scoped prompts, not a mega-prompt</li>
+              <li>Strict system prompt forbids preambles</li>
+              <li>Streams tokens as they arrive</li>
+              <li>Eight sections: title, overview, features, tech stack, installation, usage, development, license</li>
+              <li>Deterministic blocks (badges, tree) bypass the LLM</li>
+            </ul>
+            <p class="footnote">Model: <code>qwen2.5-coder:7b</code> via Ollama. ~4.7 GB.</p>
+          </article>
+        </div>
+
+        <aside class="notes">
+          Two halves: a deterministic analyzer that does the actual reading, and a local LLM that writes the prose. Splitting them is what keeps the output honest — the model never invents a framework, because the analyzer hands it the list.
+        </aside>
+      </section>
+
+      <!-- 6. Why local matters -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 06</span><span class="kicker">The decisive design choice</span></header>
+        <h2>Why a <em>local</em> LLM.</h2>
+
+        <div class="reasons">
+          <article>
+            <h3>Privacy</h3>
+            <p>Source code stays on your machine. No SOC2 review, no NDA carve-out, no API key.</p>
+          </article>
+          <article>
+            <h3>Cost</h3>
+            <p>Pulling the model is a one-time 4.7 GB download. Every README after that is free.</p>
+          </article>
+          <article>
+            <h3>Determinism</h3>
+            <p>A specific model tag produces stable output over time. Cloud models drift silently.</p>
+          </article>
+        </div>
+
+        <div class="callout">
+          <span class="mono">$ ollama pull qwen2.5-coder:7b</span><br>
+          <span class="dim">One command. Then you are offline forever.</span>
+        </div>
+
+        <aside class="notes">
+          The single biggest design call: local model, not cloud. Three concrete reasons — privacy, cost, determinism. Cost is the least talked about but quietly the most important; a tool you use every week shouldn't have a meter running.
+        </aside>
+      </section>
+
+      <!-- 7. Numbers -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 07</span><span class="kicker">Real results, real repos</span></header>
+        <h2>Numbers from the smoke tests</h2>
+
+        <div class="stats">
+          <article>
+            <div class="value">10</div>
+            <div class="label">frameworks detected on LeafLens (correctly)</div>
+          </article>
+          <article>
+            <div class="value">42<span class="unit">s</span></div>
+            <div class="label">to generate the full README of Scribe itself</div>
+          </article>
+          <article>
+            <div class="value">22 / 22</div>
+            <div class="label">automated tests passing</div>
+          </article>
+          <article>
+            <div class="value">~78%</div>
+            <div class="label">line coverage on <code>src/scribe/</code></div>
+          </article>
+        </div>
+
+        <table class="results">
+          <thead><tr><th>Repo</th><th>Files</th><th>Frameworks detected</th><th>Generation time</th></tr></thead>
+          <tbody>
+            <tr><td>Scribe (this repo)</td><td>18</td><td>Streamlit, Typer</td><td>~42 s</td></tr>
+            <tr><td>LeafLens (sister project)</td><td>14,896</td><td>Flask, PyTorch, React, +7</td><td>~58 s</td></tr>
+            <tr><td>tiny-flask-app (fixture)</td><td>6</td><td>Flask, pytest</td><td>~28 s</td></tr>
+          </tbody>
+        </table>
+
+        <aside class="notes">
+          Quantitative results. Ten frameworks correctly detected on LeafLens, including PyTorch and React. Full README of the Scribe codebase in 42 seconds. Twenty-two automated tests, all green. Coverage at 78%.
+        </aside>
+      </section>
+
+      <!-- 8. Where it falls short -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 08</span><span class="kicker">Honest analysis</span></header>
+        <h2>Where Scribe falls short</h2>
+
+        <div class="grid grid-3 failure">
+          <article class="pair">
+            <div class="a">Manifest-less repos</div>
+            <div class="vs">→</div>
+            <div class="b">Sparser features section</div>
+            <p>Without <code>pyproject.toml</code> / <code>package.json</code>, the analyzer has less to work with.</p>
+          </article>
+          <article class="pair">
+            <div class="a">Existing README present</div>
+            <div class="vs">→</div>
+            <div class="b">Model echoes the prior text</div>
+            <p>Future fix: feed only the first paragraph, not the full prior README.</p>
+          </article>
+          <article class="pair">
+            <div class="a">Concurrent CPU load</div>
+            <div class="vs">→</div>
+            <div class="b">5 s → 12 s per section</div>
+            <p>Local inference shares the machine. Close Xcode and try again.</p>
+          </article>
+        </div>
+
+        <div class="mitigations">
+          <h4>Already shipped</h4>
+          <ul>
+            <li>Strict system prompt that forbids LLM preambles and sign-offs.</li>
+            <li>Section-scoped calls so a slow section doesn't sink the whole output.</li>
+            <li>Deterministic badges + project tree — these never go through the model.</li>
+          </ul>
+        </div>
+
+        <aside class="notes">
+          Honest about limits. Manifest-less repos produce thinner output. Existing READMEs sometimes get echoed back. Concurrent CPU load doubles the per-section time. All known, all documented.
+        </aside>
+      </section>
+
+      <!-- 9. Architecture -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 09</span><span class="kicker">No backend, no database</span></header>
+        <h2>Architecture</h2>
+
+        <div class="arch-stack">
+          <div class="layer">
+            <span class="bar"></span>
+            <div class="layer-body">
+              <h3>Interfaces</h3>
+              <p>Typer CLI + Rich  ·  Streamlit web UI (localhost:8501)</p>
+            </div>
+            <span class="host">Local</span>
+          </div>
+          <div class="arrow">▼ &nbsp; shared engine</div>
+
+          <div class="layer">
+            <span class="bar"></span>
+            <div class="layer-body">
+              <h3>Engine</h3>
+              <p>RepoAnalyzer + ReadmeGenerator + Prompts + Templates</p>
+            </div>
+            <span class="host">Python</span>
+          </div>
+          <div class="arrow">▼ &nbsp; HTTP</div>
+
+          <div class="layer">
+            <span class="bar"></span>
+            <div class="layer-body">
+              <h3>Ollama server</h3>
+              <p><code>qwen2.5-coder:7b</code> · <code>localhost:11434</code> · ~4.7 GB</p>
+            </div>
+            <span class="host">Local</span>
+          </div>
+        </div>
+
+        <p class="caption-muted">No database. No queue. The only network call is <code>localhost</code>.</p>
+
+        <aside class="notes">
+          Architecture is intentionally boring: three layers, all on the user's machine. The Ollama server is the only "external" service and it's also local. Nothing to deploy, nothing to scale, no cloud costs.
+        </aside>
+      </section>
+
+      <!-- 10. Engineering -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 10</span><span class="kicker">Under the hood</span></header>
+        <h2>Engineering practices</h2>
+
+        <div class="practice-list">
+          <article>
+            <span class="key">Documentation</span>
+            <span class="value">14 sections in English</span>
+            <span class="sub">Intro, problem, SoTA, requirements, use cases, class diagrams, mockups, CLI catalog, testing, architecture, results, future work — plus a presentation cheat sheet.</span>
+          </article>
+          <article>
+            <span class="key">Tests</span>
+            <span class="value">22 passing</span>
+            <span class="sub">Unit (analyzer, prompts, templates) + integration (generator with stub LLM). ~78% coverage.</span>
+          </article>
+          <article>
+            <span class="key">Continuous integration</span>
+            <span class="value">GitHub Actions</span>
+            <span class="sub">Ruff lint + pytest with coverage report on every push.</span>
+          </article>
+          <article>
+            <span class="key">Packaging</span>
+            <span class="value">Editable install</span>
+            <span class="sub"><code>pip install -e .</code> registers the <code>scribe</code> command from <code>pyproject.toml</code>.</span>
+          </article>
+          <article>
+            <span class="key">Reproducibility</span>
+            <span class="value">Pinned model tag</span>
+            <span class="sub">Default <code>qwen2.5-coder:7b</code>. Pinning the tag freezes the writing style across runs.</span>
+          </article>
+        </div>
+
+        <aside class="notes">
+          Everything around the AI matters as much as the AI: full English docs, real tests, CI, clean packaging, pinned model. The rubric is mostly about engineering, not about the model itself.
+        </aside>
+      </section>
+
+      <!-- 11. Future work -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 11</span><span class="kicker">Where this goes</span></header>
+        <h2>Future work</h2>
+
+        <div class="grid grid-2 future">
+          <article>
+            <span class="num">1</span>
+            <div>
+              <h3>Diff-aware mode</h3>
+              <p>Show a per-section diff against the existing README, accept changes selectively.</p>
+            </div>
+          </article>
+          <article>
+            <span class="num">2</span>
+            <div>
+              <h3>Section plugins</h3>
+              <p>Drop a new prompt module into <code>src/scribe/prompts/</code> and have it auto-register.</p>
+            </div>
+          </article>
+          <article>
+            <span class="num">3</span>
+            <div>
+              <h3>pre-commit hook</h3>
+              <p>Regenerate the README in CI whenever facts change; block stale PRs.</p>
+            </div>
+          </article>
+          <article>
+            <span class="num">4</span>
+            <div>
+              <h3>Multi-doc agent</h3>
+              <p>Beyond READMEs: CONTRIBUTING, SECURITY, architecture diagrams, narrative around an API reference.</p>
+            </div>
+          </article>
+        </div>
+
+        <aside class="notes">
+          Where it goes next. Diff mode is the obvious follow-up. Plugins for project-specific sections. pre-commit hook so docs stay in sync with code. Then expand beyond README to the whole doc surface.
+        </aside>
+      </section>
+
+      <!-- 12. Thanks -->
+      <section class="slide-dark slide-thanks">
+        <div class="paper-pattern"></div>
+
+        <h1>Thank you.</h1>
+        <h2 class="italic">Questions?</h2>
+
+        <hr class="accent" />
+
+        <div class="links">
+          <div>
+            <p class="muted">Source code</p>
+            <p class="big-link mono">github.com/luigy23/scribe</p>
+          </div>
+          <div>
+            <p class="muted">Landing page</p>
+            <p class="big-link mono">scribe-luigy.vercel.app</p>
+          </div>
+        </div>
+
+        <footer class="meta">
+          Luigy Leonardo &nbsp;·&nbsp; Artificial Intelligence (BEINSOF52) &nbsp;·&nbsp; Universidad Surcolombiana &nbsp;·&nbsp; May 2026
+        </footer>
+
+        <aside class="notes">
+          Closing: source on GitHub, landing page link. Thank you — questions?
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'fade',
+      controlsTutorial: false,
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      plugins: [ RevealNotes ],
+    });
+  </script>
+</body>
+</html>
