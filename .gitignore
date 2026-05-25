@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.python-version
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage.xml
+.dev-logs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local config
+.env
+.env.*
+!.env.example
+secrets/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+dist/
+build/
+*.egg
+
+# Logs
+*.log
+logs/
+
+# Local LLM data — NOT this repo's job to ship Ollama models
+# (Ollama stores them in ~/.ollama/ anyway)
+
+# Streamlit local cache
+.streamlit/secrets.toml
+
+# Local example output (large)
+examples/output/

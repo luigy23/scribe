@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scribe"
+version = "0.1.0"
+description = "Local-LLM-powered README generator for code repositories."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Academic" }
+authors = [{ name = "Luigy Leonardo", email = "luigy.rodriguez@symmetry.club" }]
+keywords = ["readme", "generator", "llm", "ollama", "documentation"]
+classifiers = [
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Documentation",
+]
+dependencies = [
+    "typer>=0.12",
+    "rich>=13.7",
+    "ollama>=0.4",
+    "httpx>=0.27",
+    "streamlit>=1.39",
+    "PyYAML>=6.0",
+    "Jinja2>=3.1",
+]
+
+[project.scripts]
+scribe = "scribe.cli:app"
+
+[project.urls]
+Repository = "https://github.com/luigy23/scribe"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-ra --strict-markers"
