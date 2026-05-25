@@ -459,6 +459,9 @@ st.markdown(CSS, unsafe_allow_html=True)
 # pending: list of sections remaining
 # done: list of (section_name, generated_content) for sections already produced
 # active_section: the one currently being generated, or None
+QUICK_SECTIONS = ("title", "description", "features")
+FULL_SECTIONS = tuple(SECTION_ORDER)
+
 defaults = {
     "phase": "idle",
     "path": "",
@@ -468,6 +471,7 @@ defaults = {
     "active_section": None,
     "error": None,
     "cancel_requested": False,
+    "quick_mode": True,  # default to quick — friendliest for demos
 }
 for k, v in defaults.items():
     if k not in st.session_state:
@@ -553,10 +557,10 @@ def render_pills(facts) -> str:
     return f'<div class="scribe-pills">{"".join(pills)}</div>'
 
 
-def render_ticker(active: str | None, done_sections: list[str]) -> str:
+def render_ticker(active: str | None, done_sections: list[str], section_set: list[str]) -> str:
     done_set = set(done_sections)
     chips = []
-    for s in SECTION_ORDER:
+    for s in section_set:
         cls = "done" if s in done_set else ("active" if s == active else "")
         chips.append(f'<span class="scribe-tick {cls}">{s}</span>')
     return f'<div class="scribe-ticker">{"".join(chips)}</div>'
@@ -624,21 +628,44 @@ if st.session_state.phase == "idle":
                     st.session_state.path = str(repo)
                     st.rerun()
 
-    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+    # Quick mode toggle with ETA
+    st.markdown('<span class="scribe-label">Mode</span>', unsafe_allow_html=True)
+    mode_col_a, mode_col_b = st.columns(2)
+    with mode_col_a:
+        if st.button(
+            f"⚡ Quick ({len(QUICK_SECTIONS)} sections · ~20s)",
+            use_container_width=True,
+            key="mode_quick",
+            type="primary" if st.session_state.quick_mode else "secondary",
+        ):
+            st.session_state.quick_mode = True
+            st.rerun()
+    with mode_col_b:
+        if st.button(
+            f"📘 Full ({len(FULL_SECTIONS)} sections · ~60s)",
+            use_container_width=True,
+            key="mode_full",
+            type="primary" if not st.session_state.quick_mode else "secondary",
+        ):
+            st.session_state.quick_mode = False
+            st.rerun()
+
+    st.markdown("<div style='height: 18px;'></div>", unsafe_allow_html=True)
 
     col_l, col_c, col_r = st.columns([1, 2, 1])
     with col_c:
-        if st.button("Generate README", type="primary", use_container_width=True):
+        if st.button("Generate README", type="primary", use_container_width=True, key="go"):
             try:
                 resolved = Path(path_input).expanduser().resolve()
                 if not resolved.is_dir():
                     st.session_state.error = f"Not a directory: {resolved}"
                 else:
+                    sections = QUICK_SECTIONS if st.session_state.quick_mode else FULL_SECTIONS
                     st.session_state.path = str(resolved)
                     st.session_state.phase = "analyzing"
                     st.session_state.error = None
                     st.session_state.facts = None
-                    st.session_state.pending = list(SECTION_ORDER)
+                    st.session_state.pending = list(sections)
                     st.session_state.done = []
                     st.session_state.active_section = None
                     st.session_state.cancel_requested = False
@@ -694,8 +721,9 @@ if st.session_state.phase == "analyzing":
 if st.session_state.phase == "running":
     repo_path = Path(st.session_state.path)
     facts = st.session_state.facts
-    total = len(SECTION_ORDER)
-    done_count = len([s for s, _ in st.session_state.done if s in SECTION_ORDER])
+    section_set = list(QUICK_SECTIONS if st.session_state.quick_mode else FULL_SECTIONS)
+    total = len(section_set)
+    done_count = len([s for s, _ in st.session_state.done if s in section_set])
 
     # Header with Stop button
     col_l, col_r = st.columns([4, 1])
@@ -717,8 +745,8 @@ if st.session_state.phase == "running":
 
     # Ticker + progress
     next_section = st.session_state.pending[0] if st.session_state.pending else None
-    section_names_done = [s for s, _ in st.session_state.done if s in SECTION_ORDER]
-    st.markdown(render_ticker(next_section, section_names_done), unsafe_allow_html=True)
+    section_names_done = [s for s, _ in st.session_state.done if s in section_set]
+    st.markdown(render_ticker(next_section, section_names_done, section_set), unsafe_allow_html=True)
     st.progress(
         done_count / total,
         text=f"{done_count} of {total} sections written",
