@@ -220,9 +220,106 @@ My Project is a small utility for parsing CSV files into JSON...
         </aside>
       </section>
 
-      <!-- 7. Numbers -->
+      <!-- 7. Tech stack -->
       <section>
-        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 07</span><span class="kicker">Real results, real repos</span></header>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 07</span><span class="kicker">Everything under the hood</span></header>
+        <h2>Tech stack</h2>
+
+        <div class="tech-grid">
+          <article class="tech-card">
+            <div class="tech-cat">Language</div>
+            <div class="tech-items">
+              <span class="tech-chip">Python 3.13</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">CLI</div>
+            <div class="tech-items">
+              <span class="tech-chip">Typer 0.12</span>
+              <span class="tech-chip">Rich 13.7</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">Web UI</div>
+            <div class="tech-items">
+              <span class="tech-chip">Streamlit 1.39</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">LLM runtime</div>
+            <div class="tech-items">
+              <span class="tech-chip">Ollama</span>
+              <span class="tech-chip">httpx 0.27</span>
+            </div>
+          </article>
+          <article class="tech-card highlight">
+            <div class="tech-cat">Default model</div>
+            <div class="tech-items">
+              <span class="tech-chip strong">qwen2.5-coder:7b</span>
+              <span class="tech-meta">~4.7 GB · Apache 2.0</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">Manifest parsers</div>
+            <div class="tech-items">
+              <span class="tech-chip">tomllib</span>
+              <span class="tech-chip">PyYAML</span>
+              <span class="tech-chip">json</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">Templating</div>
+            <div class="tech-items">
+              <span class="tech-chip">Jinja2</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">Testing</div>
+            <div class="tech-items">
+              <span class="tech-chip">pytest 8</span>
+              <span class="tech-chip">pytest-cov</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">Linting</div>
+            <div class="tech-items">
+              <span class="tech-chip">ruff</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">Packaging</div>
+            <div class="tech-items">
+              <span class="tech-chip">pyproject.toml</span>
+              <span class="tech-chip">setuptools</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">CI</div>
+            <div class="tech-items">
+              <span class="tech-chip">GitHub Actions</span>
+            </div>
+          </article>
+          <article class="tech-card">
+            <div class="tech-cat">Hosting</div>
+            <div class="tech-items">
+              <span class="tech-chip">Vercel (landing)</span>
+              <span class="tech-meta">tool itself: local-only</span>
+            </div>
+          </article>
+        </div>
+
+        <aside class="notes">
+          Quick tour of the stack. Python 3.13 throughout, packaged with pyproject.toml so 'pip install -e .'
+          registers the 'scribe' command. CLI is Typer with Rich for color. Web UI is Streamlit.
+          The LLM piece is Ollama with qwen2.5-coder 7B by default — Apache 2.0 licensed, 4.7 GB on disk.
+          Tests use pytest, lint with ruff. CI is GitHub Actions on every push. The only cloud piece
+          is the static landing page on Vercel; the tool itself never leaves the user's laptop.
+        </aside>
+      </section>
+
+      <!-- 8. Numbers -->
+      <section>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 08</span><span class="kicker">Real results, real repos</span></header>
         <h2>Numbers from the smoke tests</h2>
 
         <div class="stats">
@@ -260,7 +357,7 @@ My Project is a small utility for parsing CSV files into JSON...
 
       <!-- 8. Where it falls short -->
       <section>
-        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 08</span><span class="kicker">Honest analysis</span></header>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 09</span><span class="kicker">Honest analysis</span></header>
         <h2>Where Scribe falls short</h2>
 
         <div class="grid grid-3 failure">
@@ -300,7 +397,7 @@ My Project is a small utility for parsing CSV files into JSON...
 
       <!-- 9. Architecture -->
       <section>
-        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 09</span><span class="kicker">No backend, no database</span></header>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 10</span><span class="kicker">No backend, no database</span></header>
         <h2>Architecture</h2>
 
         <div class="arch-stack">
@@ -343,7 +440,7 @@ My Project is a small utility for parsing CSV files into JSON...
 
       <!-- 10. Engineering -->
       <section>
-        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 10</span><span class="kicker">Under the hood</span></header>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 11</span><span class="kicker">Under the hood</span></header>
         <h2>Engineering practices</h2>
 
         <div class="practice-list">
@@ -381,7 +478,7 @@ My Project is a small utility for parsing CSV files into JSON...
 
       <!-- 11. Future work -->
       <section>
-        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 11</span><span class="kicker">Where this goes</span></header>
+        <header class="topbar"><span class="mono">~/scribe</span><span>Slide 12</span><span class="kicker">Where this goes</span></header>
         <h2>Future work</h2>
 
         <div class="grid grid-2 future">
